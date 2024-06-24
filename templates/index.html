@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Tren Saham</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Analisis Tren Saham</h1>
+        <form method="post">
+            <label for="ticker">Ticker Saham:</label>
+            <input type="text" id="ticker" name="ticker" required>
+            <label for="start_date">Tanggal Mulai (YYYY-MM-DD):</label>
+            <input type="text" id="start_date" name="start_date" required>
+            <label for="end_date">Tanggal Akhir (YYYY-MM-DD):</label>
+            <input type="text" id="end_date" name="end_date" required>
+            <button type="submit">Analisis</button>
+        </form>
+        {% if plot_url %}
+        <div class="plot">
+            <img src="data:image/png;base64,{{ plot_url }}">
+        </div>
+        <div class="metrics">
+            <p><strong>Mean Absolute Error (MAE):</strong> {{ mae }}</p>
+            <p><strong>Mean Squared Error (MSE):</strong> {{ mse }}</p>
+            <p><strong>R-squared (R²):</strong> {{ r2 }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
