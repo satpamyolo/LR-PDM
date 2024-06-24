@@ -12,10 +12,6 @@
   ],
   "builds": [
     {
-      "src": "/templates/index.html",
-      "use": "@vercel/static-build"
-    },
-    {
       "src": "/app.py",
       "use": "@vercel/python"
     }
