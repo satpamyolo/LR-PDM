@@ -1,4 +1,4 @@
-from flask import Flask, render_public, request
+from flask import Flask, render_templates, request
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -59,9 +59,9 @@ def index():
         img.seek(0)
         plot_url = base64.b64encode(img.getvalue()).decode()
 
-        return render_public('index.html', plot_url=plot_url, mae=mae, mse=mse, r2=r2)
+        return render_templates('index.html', plot_url=plot_url, mae=mae, mse=mse, r2=r2)
 
-    return render_public('index.html')
+    return render_templates('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
